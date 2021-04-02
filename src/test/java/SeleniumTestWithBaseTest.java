@@ -14,18 +14,14 @@ import org.testng.annotations.Test;
  * Simple raw test af a login test case without any page object Model
  *
  */
-public class SeleniumTestWithoutPOM{
+public class SeleniumTestWithBaseTest extends BasicSeleniumTest {
 
-    public WebDriver driver;
-    @BeforeTest
-    public void setUp(){
-        System.out.println("Set up");
-        System.setProperty("webdriver.chrome.driver","C:/WebDrivers/chromedriver.exe");
-        driver = new ChromeDriver();
-    }
+    
 
+   
     @Test
     void logInTest(){
+        WebDriver driver = getDriver();
         //1. go to the main page
         driver.get("https://opensource-demo.orangehrmlive.com");
         //2. Find and enter the userName textField
@@ -44,10 +40,6 @@ public class SeleniumTestWithoutPOM{
 
     }
 
-    @AfterClass
-    public void tearDown(){
-        driver.quit();
-    }
 
 
 }
