@@ -16,30 +16,29 @@ import org.testng.annotations.Test;
  */
 public class SeleniumTestWithBaseTest extends BasicSeleniumTest {
 
-    
 
-   
     @Test
     void logInTest(){
-        WebDriver driver = getDriver();
         //1. go to the main page
+        WebDriver driver = getDriver();
         driver.get("https://opensource-demo.orangehrmlive.com");
+
         //2. Find and enter the userName textField
         WebElement inputUserName = driver.findElement(By.id("txtUsername"));
         inputUserName.sendKeys("Admin");
+
         //3. Find the password field and enter the password
         WebElement inputPassword = driver.findElement(By.id("txtPassword"));
         inputPassword.sendKeys("admin123");
+
         //4. Find the Login Button and press it
         WebElement loginButton = driver.findElement(By.id("btnLogin"));
         loginButton.click();
 
+        // 5. Verify successful login
         String currentUrl = driver.getCurrentUrl();
         System.out.println("URL: "+currentUrl);
         Assert.assertTrue(currentUrl.contains("dashboard"));
-
     }
-
-
 
 }
